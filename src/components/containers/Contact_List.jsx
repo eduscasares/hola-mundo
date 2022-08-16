@@ -5,7 +5,7 @@ import ContactComponent from '../pure/ContactComponent';
 
 const ContactList = () => {
 
-    const defaultContact = new Contact('Name', 'Surname', 'email@email.com', true)
+    const defaultContact = new Contact('Name', 'Surname', 'email@email.com', false)
 
     return (
         <div>
