@@ -64,6 +64,17 @@ const Ejemplo1 = () => {
     return (
         <div>
             
+            <h1>*** Ejemplo de useState() ***</h1>
+            <p>Contador: { contador }</p>
+            <p>Persona: { persona.nombre }</p>
+            <p>Email: { persona.email }</p>
+
+            {/* Bloque de botones para actualizar el estado */}
+            <div>
+                <button onClick={ incrementarContador }>Incrementar contador</button>
+                <button onClick={ actualizarPersona }>Actualizar datos persona</button>
+            </div>
+
         </div>
     );
 }
