@@ -1,6 +1,6 @@
 import React, { useState  } from 'react'
 import PropTypes from 'prop-types'
-import { Contact } from '../../models/contact.class'
+// import { Contact } from '../../models/contact.class'
 
 const ContactComponent = ({ contact }) => {
 
