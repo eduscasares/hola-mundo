@@ -29,10 +29,36 @@ const TaskListComponent = () => {
         };
     }, [tasks]);
 
+    function completeTask(task) {
+        console.log('Complete this task: ', task);
 
-    
-    const changeCompleted = (id) => {
-        console.log('TODO: cambiar estado de una tarea')
+        // Buscamos el índice del elemento que hemos tocado
+        const index = tasks.indexOf(task)
+
+        // Usamos una variable temporal para traernos todos los datos
+        const tempTask = [...tasks];
+
+        // Generamos el toggle con el que controlaremos el estado
+        tempTask[index].completed = !tempTask[index].completed;
+
+        // Actualizamos el estado con la nueva lista de tareas
+        setTasks(tempTask);
+    }
+
+    function deleteTask(task) {
+        console.log('Delete this task: ', task);
+        const index = tasks.indexOf(task);
+        const tempTask = [...tasks];
+        tempTask.splice(index, 1);
+        setTasks(tempTask);
+    }
+
+    function addTask(task) {
+        console.log('Added this task: ', task);
+        const index = tasks.indexOf(task);
+        const tempTask = [...tasks];
+        tempTask.push(task)
+        setTasks(tempTask);
     }
 
     return (
@@ -65,7 +91,9 @@ const TaskListComponent = () => {
                                     return(
                                         <TaskComponent 
                                             task={ task } 
-                                            key={ index } >
+                                            key={ index } 
+                                            complete={ completeTask }
+                                            remove={ deleteTask } >
                                         </TaskComponent>
                                     )
                                 })}
@@ -74,7 +102,7 @@ const TaskListComponent = () => {
                         </table>
                     </div>
 
-                    <TaskForm></TaskForm>
+                    <TaskForm add = { addTask }></TaskForm>
                 </div>
             </div>
         </div>

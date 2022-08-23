@@ -2,7 +2,7 @@ import './App.css';
 // import Greeting from './components/pure/Greeting';
 // import GreetingF from './components/pure/GreetingF';
 import TaskListComponent from './components/containers/Task_list';
-import Father from './components/containers/Father';
+// import Father from './components/containers/Father';
 // import ContactList from './components/containers/Contact_List';
 // import Ejemplo1 from './hooks/Ejemplo1';
 // import Ejemplo2 from './hooks/Ejemplo2';
@@ -16,10 +16,7 @@ function App() {
 
     <>
 
-      {/* <TaskListComponent></TaskListComponent> */}
-      <Father></Father>
-
-
+      <TaskListComponent></TaskListComponent>
 
     </>
 
