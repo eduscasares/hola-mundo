@@ -4,7 +4,7 @@ import { Task } from '../../models/task.class';
 import '../../styles/task.scss'
 import { LEVELS } from '../../models/level.enum';
  
-
+ 
 const TaskComponent = ({ task, complete, remove }) => {
 
     useEffect(() => {
@@ -54,9 +54,21 @@ const TaskComponent = ({ task, complete, remove }) => {
         }
     }
 
+
+    const taskCompleted = {
+        color: 'gray',
+        textDecoration: 'line-through'
+    }
+
+    const taskPending = {
+        color: 'tomato',
+        fontWeight: 'normal',
+    }
+
+
     return (
 
-        <tr className='fw-normal'>
+        <tr className='fw-normal' style={ task.completed ? taskCompleted : taskPending }>
             <th>
                 <span className='ms-2'> { task.name } </span>
             </th>
