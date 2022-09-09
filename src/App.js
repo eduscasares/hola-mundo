@@ -12,7 +12,9 @@ import './App.css';
 // import EntregableEjercicioClassToFunction from './components/pure/EntregableEjercicioClassToFunction'
 // import ConditionaRender from './components/pure/conditionaRender';
 // import LoginFormik from './components/pure/forms/LoginFormik';
-import RegisterFormik from './components/pure/forms/RegisterFormik';
+// import RegisterFormik from './components/pure/forms/RegisterFormik';
+// import AsyncExample from './components/pure/AsyncExample';
+import ObservableExample from './components/pure/ObservableExample';
 
 function App() {
   return (
@@ -26,8 +28,12 @@ function App() {
 
       {/* Ejemplos de uso de Formik y Yup */}
       {/* <LoginFormik></LoginFormik> */}
-      <RegisterFormik></RegisterFormik>
+      {/* <RegisterFormik></RegisterFormik> */}
 
+
+      {/* Ejemplos de PROCESOS ASINCRONOS */}
+      {/* <AsyncExample></AsyncExample> */}
+      <ObservableExample></ObservableExample>
     </>
 
   );
