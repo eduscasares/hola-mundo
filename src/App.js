@@ -14,7 +14,8 @@ import './App.css';
 // import LoginFormik from './components/pure/forms/LoginFormik';
 // import RegisterFormik from './components/pure/forms/RegisterFormik';
 // import AsyncExample from './components/pure/AsyncExample';
-import ObservableExample from './components/pure/ObservableExample';
+// import ObservableExample from './components/pure/ObservableExample';
+import FetchExample from './components/pure/FetchExample';
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
 
       {/* Ejemplos de PROCESOS ASINCRONOS */}
       {/* <AsyncExample></AsyncExample> */}
-      <ObservableExample></ObservableExample>
+      {/* <ObservableExample></ObservableExample> */}
+      <FetchExample></FetchExample>
     </>
 
   );
