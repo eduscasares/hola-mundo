@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllUsers, getPagedUsers, getUserDetails } from '../../services/fetchService';
+import { getAllUsers, getPagedUsers, getUserDetails, login } from '../../services/fetchService';
 
 const FetchExample = () => {
 
@@ -62,7 +62,7 @@ const FetchExample = () => {
             setSelectedUser(response.data);
         })   
         .catch((error) => {
-            alert(`Something wen wrong ${ error } `);
+            alert(`Something went wrong ${ error } `);
         })
         .finally(() => {
             console.log('Ending obtaining users');
@@ -70,9 +70,25 @@ const FetchExample = () => {
         });
     }
 
+    const authLogin = () => {
+        login('eve.holt@reqres.in', 'cityslicka')
+        .then((response) => {
+            console.log(`TOKEN: ${ response.token }`);
+            sessionStorage.setItem('token', response.token)
+            })   
+            .catch((error) => {
+                alert(`Something went wrong ${ error } while login user`);
+            })
+            .finally(() => {
+                console.log('Ending login users. Navigate to home...');
+            });
+    }
 
     return (
         <div>
+
+            <button onClick={ () => authLogin() }>Do Login</button>
+
             <h2>Users: </h2>
             { users.map((user, index) => 
                 (<p key={index} onClick={ () => obtainUserDetails(user.id) }>
@@ -92,15 +108,21 @@ const FetchExample = () => {
             </button>
 
             <div>
-                { selectedUser && (
-                    <div>
-                        <h3>User details: </h3>
-                        <p>Name: {selectedUser.first_name}</p>
-                        <p>Last name: {selectedUser.last_name}</p>
-                        <p>Email: {selectedUser.email}</p>
-                        <img src={selectedUser.avatar} alt={selectedUser.first_name} style={{height: '50px', width: '50px', borderRadius: '50px'}} />
-                    </div>
-                )}
+
+                { selectedUser != null ? 
+                    (
+                        <div>
+                            <h3>User details: </h3>
+                            <p>Name: {selectedUser.first_name}</p>
+                            <p>Last name: {selectedUser.last_name}</p>
+                            <p>Email: {selectedUser.email}</p>
+                            <img src={selectedUser.avatar} alt={selectedUser.first_name} style={{height: '150px', width: '150px', borderRadius: '150px'}} />
+                        </div>
+                    ) :
+                    (
+                        <h6>Please click on a User to see its details</h6>
+                    )
+                }
 
             </div>
 

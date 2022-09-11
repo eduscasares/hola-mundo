@@ -26,3 +26,37 @@ export const getUserDetails = async (id) => {
     return response.json();
 
 }
+
+
+/**
+ * --- Configuramos FETCH ---
+ * 
+ * Sacamos email y password de la api reqres.in, que en el caso de devolver un código 200, 
+ * nos devolverá un token de acceso
+ */
+export const login = async (email, password) => {
+
+    let body = {
+        email: email,
+        password: password,
+    }
+
+    let response = await fetch('https://reqres.in/api/login', {
+        method: 'POST',
+        mode: 'cors',
+        // credentials: 'omit',
+        // cache: 'no-cache',
+        // headers: {
+        //     'Content-type': 'application/json',
+        // },
+        body: JSON.stringify(body),
+
+    });
+
+    console.log('Response: ', response);
+    console.log('Status: ', response.status);
+    console.log('OK?: ', response.ok)
+
+    return response.json();
+
+}
