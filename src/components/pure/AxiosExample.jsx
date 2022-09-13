@@ -3,22 +3,21 @@ import { getRandomUser } from '../../services/axiosService';
 
 const AxiosExample = () => {
 
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
        obtainUser();
-    })
+    }, []);
 
     const obtainUser = () => {
         getRandomUser()
-        .then((response) => {
-            if(response.status === 200) {
-                setUser(response.data.results);
-            }
-        })
-        .catch((error) => alert('Something went wrong: ', error))
+            .then((response) => {
+                if(response.status === 200) {
+                    setUser(response.data.results[0]);
+                }
+            })
+            .catch((error) => alert('Something went wrong: ', error));
     }
-
 
     return (
         <div>
@@ -27,20 +26,17 @@ const AxiosExample = () => {
             { user !== null ? 
                 (
                     <div>
-                        <h2>User details:</h2>
-                        <p>Name: {user.name.first}</p>
-                        <p>Surname: {user.name.last}</p>
-                        <p>Email: {user.name.email}</p>
-                        {/* <img src={user.picture} alt="Avatar" /> */}
+                        <img src={ user.picture.large } alt="Avatar" />
+                        <h2>{ user.name.title } { user.name.first } { user.name.last}</h2>
+                        <p>Email: { user.email }</p>
                     </div>
-                ) :
-                (
-                    <div>
-                        <p>Generate a new user</p>
-                        <button onClick={ obtainUser }>Generate random user</button>
-                    </div>
-                )
+                ) : null
             }
+
+            <div>
+                <p>Generate a new user</p>
+                <button onClick={ obtainUser }>Generate random user</button>
+            </div>
         </div>
     );
 }
